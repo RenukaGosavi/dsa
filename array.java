@@ -43,22 +43,27 @@ public class array {
         }
     }
 
-    public void move_zero_atend(int arr[]) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == 0) {
-                    if (arr[j] == 0) {
+public void zero_at_end(int arr[]){
+                for(int i=0;i<arr.length;i++){
+                if(arr[i]==0){
+                    int j=i+1;
+                    while(j<arr.length){
+                    if(arr[j]!=0){
+                        int temp=arr[i];
+                        arr[i]=arr[j];
+                        arr[j]=temp;
+                        break;
+                    }
+                    else{
                         j++;
-                        System.err.println(j);
-                    } else {
-                        int temp = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = temp;
                     }
                 }
             }
+
         }
-    }
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
 
     public void sort_array(int arr[]) {
         for (int i = 0; i < arr.length - 1; i++) {
@@ -113,17 +118,6 @@ public class array {
     }
 
     public void remove_duplicates(int arr[]) {
-        // int i=0, j = 0;
-        // int n=arr.length-1;
-        // while (i < n ) {
-        //     if (arr[i] == arr[i + 1]) {
-        //         i++;
-        //     } else {
-        //         arr[j] = arr[i];
-        //         j++;
-        //         i++;
-        //     }
-        // }
         
     int j = 0;
     for (int i = 1; i < arr.length; i++) {
@@ -141,12 +135,13 @@ public class array {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] arr={1,5,2,2,10,7,12,12,12};
+        int[] arr={1,0,0,2,2,10,7,12,12,12};
         // int[] arr={1,2,3,4,5,6};
         array obj = new array();
         obj.Largest_element_array(arr);
         obj.Second_largest_element(arr);
         obj.Sorted_Unsorted(arr);
+        obj.zero_at_end(arr);
         obj.sort_array(arr);
         obj.Reverse_array(arr);
         obj.rotate_array(arr, sc);
